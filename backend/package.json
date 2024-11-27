@@ -1,6 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
+<<<<<<< HEAD
   "main": "server.ts",
   "scripts": {
     "build:prod": "tsc -p tsconfig.json",
@@ -8,6 +9,10 @@
     "clean": "rimraf tsconfig.tsbuildinfo ./dist",
     "start:prod": "npm run clean && npm run build:prod && NODE_ENV=production && node dist/main",
     "start:dev": "npm run clean && npm run build:dev && nodemon dist/main",
+=======
+  "main": "index.js",
+  "scripts": {
+>>>>>>> 5ad4fc310d0e536ae51e3c6042561d630436350a
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -15,6 +20,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+<<<<<<< HEAD
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "express": "^4.21.1",
@@ -26,5 +32,8 @@
   "devDependencies": {
     "ts-node": "^10.9.2",
     "tsx": "^4.19.2"
+=======
+    "express": "^4.21.1"
+>>>>>>> 5ad4fc310d0e536ae51e3c6042561d630436350a
   }
 }
