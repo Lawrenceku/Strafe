@@ -1,9 +1,12 @@
-const express = require('express');
-const cors = require('cors');
+import express from 'express';
+import cors from 'cors'
+
+import authRouter from "./routes/auth";
+import userRouter from "./routes/user";
+
+import database from "./models/index"
 
 const app = express();
-
-const database = require("./models/index")
 
 var corsOptions = {
   origin: "*"
@@ -30,5 +33,5 @@ database.sequelize.sync({force:true}).then(()=>{
 
 
 //Routes
-require("./routes/auth")(app);
-require("./routes/user")(app);
+authRouter(app);
+userRouter(app);

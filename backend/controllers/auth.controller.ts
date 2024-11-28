@@ -1,8 +1,7 @@
-const dbs = require("../models");
+import { secret } from "../config/auth.config";
+import dbs from "../models";
 
 const User = dbs.user;
-
-const Op = dbs.Sequelize.Op;
 
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
@@ -20,7 +19,7 @@ exports.signup = (req:any, res:any) => {
     .then((user:any) => {
       const token = jwt.sign(
         { id: user.id },
-        config.secret,
+        secret,
         {
           algorithm: "HS256",
           allowInsecureKeySizes: true,
@@ -65,7 +64,7 @@ exports.signin = (req:any, res:any) => {
 
       const token = jwt.sign(
         { id: user.id },
-        config.secret,
+        secret,
         {
           algorithm: "HS256",
           allowInsecureKeySizes: true,

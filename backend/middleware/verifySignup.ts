@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-const db = require("../models");
+import db from "../models";
 const User = db.user;
 
 const checkDuplicateUsernameOrEmail = async (req: Request, res: Response, next: NextFunction) => {
@@ -38,4 +38,4 @@ const verifySignUp = {
     checkDuplicateUsernameOrEmail,
 };
 
-module.exports = verifySignUp;
+export default verifySignUp;
