@@ -1,10 +1,10 @@
-const config = require('../config/db.config.ts');
+import config from '../config/db.config';
 
-const Sequelize = require('sequelize');
+import { Dialect, Sequelize } from 'sequelize';
 
 const sequelize = new Sequelize(config.DB, config.USER, config.PASSWORD, {
   host: config.HOST,
-  dialect: config.dialect,
+  dialect: config.dialect as Dialect,
   // logging: console.log,
   pool: {
     max: config.pool.max,
@@ -31,4 +31,4 @@ db.sequelize = sequelize;
 
 db.user = require('./user.model')(sequelize, Sequelize);
 
-module.exports = db;
+export default db

@@ -1,7 +1,9 @@
-module.exports = {
+import { postgres_password } from "./config";
+
+export default {
     HOST: "localhost",
     USER: "postgres",
-    PASSWORD: "password",
+    PASSWORD: postgres_password,
     DB: "strafe",
     dialect: "postgres",
     pool: {
