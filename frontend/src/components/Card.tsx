@@ -1,10 +1,11 @@
 interface CardProps {
-    image: string;
-    title: string;
-    description: string
+    image?: string;
+    title?: string;
+    description?: string
+    movie: any;
 }
 
-const Card =  ({image, title, description}: CardProps) => {
+const Card =  ({image, title, description,movie}: CardProps) => {
     return (
         <>
         <div className="h-96 w-60">

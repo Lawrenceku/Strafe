@@ -6,13 +6,13 @@ const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading,setLoading] = useState(false)
-  const [errorMessage,setErrorMessage] = useState('')
+  const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = async (e:any) => {
-    setLoading(true)
-    setErrorMessage('')
+  const handleSubmit = async (e: any) => {
+    setLoading(true);
+    setErrorMessage('');
     e.preventDefault(); // Prevent the default page reload
     const data = { username, email, password };
 
@@ -28,14 +28,18 @@ const Register = () => {
       if (response.ok) {
         const result = await response.json();
         console.log("Registration successful:", result);
-        navigate("/login");
+        localStorage.setItem("accessToken", result.accessToken)
+        navigate("/"); // Redirect to the home page or wherever after successful registration
       } else {
+        const result = await response.json();
+        setLoading(false);
+        setErrorMessage(result.message);
         console.error("Failed to register:", response.statusText);
       }
-    } catch (error:any) {
+    } catch (error: any) {
       console.error("Error during registration:", error);
-      setErrorMessage(error.message)
-      setLoading(false)
+      setErrorMessage(error.message);
+      setLoading(false);
     }
   };
 
@@ -51,6 +55,7 @@ const Register = () => {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               className="bg-slate-200 p-2 w-full rounded-lg mt-4"
+              required
             />
             <input
               type="email"
@@ -58,6 +63,7 @@ const Register = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="bg-slate-200 p-2 w-full rounded-lg"
+              required
             />
             <input
               type="password"
@@ -65,13 +71,14 @@ const Register = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="bg-slate-200 p-2 w-full rounded-lg"
+              required
             />
             <span className="text-red-600 font-light">{errorMessage}</span>
             <button
               type="submit"
-              className={`${loading?`bg-gray-500 cursor-not-allowed`:`bg-red-600 cursor-pointer`} p-2 font-space rounded-full text-slate-100 font-medium w-full px-10 mt-10`}
+              className={`${loading ? `bg-gray-500 cursor-not-allowed` : `bg-red-600 cursor-pointer`} p-2 font-space rounded-full text-slate-100 font-medium w-full px-10 mt-10`}
             >
-              {loading? `Loading...`: `Register`}
+              {loading ? `Loading...` : `Register`}
             </button>
             <p>
               Already have an account?{" "}
