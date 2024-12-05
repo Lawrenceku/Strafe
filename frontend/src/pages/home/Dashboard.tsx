@@ -80,7 +80,7 @@ const Dashboard = () => {
           />
           {menuOpen && (
             <div
-              className="bg-slate-100 z-50 font-space font-light absolute right-0 top-10 rounded-xl font-medium px-4 py-5"
+              className="bg-slate-100 z-50 font-space absolute right-0 top-10 rounded-xl font-medium px-4 py-5"
               ref={menuRef}
             >
               <ul>

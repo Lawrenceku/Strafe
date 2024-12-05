@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from "express";
+const config = require('../config/auth.config.ts');
 
 const jwt = require('jsonwebtoken');
 // const User = db.user

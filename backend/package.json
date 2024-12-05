@@ -8,15 +8,18 @@
     "clean": "rimraf tsconfig.tsbuildinfo ./dist",
     "start:prod": "npm run clean && npm run build:prod && NODE_ENV=production && node dist/main",
     "start:dev": "npm run clean && npm run build:dev && nodemon dist/main",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "back": "npx tsx server"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "axios": "^1.7.9",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
     "express": "^4.21.1",
     "jsonwebtoken": "^9.0.2",
     "pg": "^8.13.1",
